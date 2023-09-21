@@ -104,7 +104,7 @@ namespace UoN.ExpressiveAnnotations.NetCore.Attributes
             var processCache = context.ActionContext.HttpContext.RequestServices.GetService<IMemoryCache>();
             var requestCache = context.ActionContext.HttpContext.RequestServices.GetService<RequestCache>();
 
-            var validator = new RequiredIfValidator(context.ModelMetadata, this, processCache, requestCache);
+            var validator = new RequiredIfValidator(context.ModelMetadata, context.Attributes["id"], this, processCache, requestCache);
             validator.AttachValidationRules(context, DefaultErrorMessage);
         }
     }

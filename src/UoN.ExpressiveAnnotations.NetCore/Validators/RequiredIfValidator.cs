@@ -26,8 +26,8 @@ namespace UoN.ExpressiveAnnotations.NetCore.Validators
         /// <param name="memoryCache">An IMemoryCache instance, scoped to the process.</param>
         /// <param name="requestCache">A RequestCache instance, scoped to the request.</param>
         /// <exception cref="System.ComponentModel.DataAnnotations.ValidationException"></exception>
-        public RequiredIfValidator(ModelMetadata metadata, RequiredIfAttribute attribute, IMemoryCache memoryCache, IMemoryCache requestCache)
-            : base(metadata, attribute, memoryCache, requestCache)
+        public RequiredIfValidator(ModelMetadata metadata, string attributeId, RequiredIfAttribute attribute, IMemoryCache memoryCache, IMemoryCache requestCache)
+            : base(metadata, attributeId, attribute, memoryCache, requestCache)
         {
             AllowEmpty = attribute.AllowEmptyStrings;
 

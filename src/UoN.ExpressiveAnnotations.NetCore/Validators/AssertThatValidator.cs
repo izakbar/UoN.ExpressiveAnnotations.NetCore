@@ -24,8 +24,8 @@ namespace UoN.ExpressiveAnnotations.NetCore.Validators
         /// <param name="memoryCache">An IMemoryCache instance, scoped to the process.</param>
         /// <param name="requestCache">A RequestCache instance, scoped to the request.</param>
         /// <exception cref="System.ComponentModel.DataAnnotations.ValidationException"></exception>
-        public AssertThatValidator(ModelMetadata metadata, AssertThatAttribute attribute, IMemoryCache memoryCache, IMemoryCache requestCache)
-            : base(metadata, attribute, memoryCache, requestCache)
+        public AssertThatValidator(ModelMetadata metadata, string attributeId, AssertThatAttribute attribute, IMemoryCache memoryCache, IMemoryCache requestCache)
+            : base(metadata, attributeId, attribute, memoryCache, requestCache)
         {
         }
 

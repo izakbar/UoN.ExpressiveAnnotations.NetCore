@@ -35,7 +35,7 @@ namespace UoN.ExpressiveAnnotations.NetCore.Validators
         /// <param name="processCache">An IMemoryCache instance, scoped to the process.</param>
         /// <param name="requestCache">A RequestCache instance, scoped to the request.</param>
         /// <exception cref="System.ComponentModel.DataAnnotations.ValidationException"></exception>
-        protected ExpressiveValidator(ModelMetadata metadata, T attribute, IMemoryCache processCache, IMemoryCache requestCache)
+        protected ExpressiveValidator(ModelMetadata metadata, string attributeId, T attribute, IMemoryCache processCache, IMemoryCache requestCache)
         {
             _requestCache = requestCache;
 
@@ -43,7 +43,8 @@ namespace UoN.ExpressiveAnnotations.NetCore.Validators
             {
                 Debug.WriteLine($"[ctor entry] process: {Process.GetCurrentProcess().Id}, thread: {Thread.CurrentThread.ManagedThreadId}");
 
-                var fieldId = $"{metadata.ContainerType.FullName}.{metadata.PropertyName}".ToLowerInvariant();
+                var propertytName = string.IsNullOrEmpty(attributeId) ? metadata.PropertyName : attributeId;
+                var fieldId = $"{metadata.ContainerType.FullName}.{propertytName}".ToLowerInvariant();
                 AttributeFullId = $"{attribute.TypeId}.{fieldId}".ToLowerInvariant();
                 AttributeWeakId = $"{typeof(T).FullName}.{fieldId}".ToLowerInvariant();
                 FieldName = metadata.PropertyName;
